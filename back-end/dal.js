@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = process.env.REACT_APP_MONGO_URI || 'mongodb://localhost:27017';
-//const uri = "mongodb+srv://wmcconnell:ndMPuIUJfazo7yN0@capstone.hdjswsh.mongodb.net/?retryWrites=true&w=majority"
 let db  = null;
  
 // connect to mongo
