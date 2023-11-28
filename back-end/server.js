@@ -1,26 +1,19 @@
 const express = require('express');
 const app = express();
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' })
 const cors = require('cors');
 const dal = require('./dal.js');
-// const e = require('express');
-
-const PORT = process.env.REACT_APP_PORT || 5500;
 
 //CRUD
+console.log("~~~~CRUD~~~~~~")
+console.log(process.env.REACT_APP_MONGO_URI);
 console.log("~~~~~~~~~~")
-console.log(process.env.REACT_APP_MONGO_URI)
-console.log("~~~~~~~~~~")
-
-//.env contents
-console.log("~~~~~~~~~~~~")
-console.log(process.env.REACT_APP)
-console.log("~~~~~~~~~~~~")
 
 //path info
-console.log("~~~~~~~~~~~~")
+console.log("~~~~dirname~~~~~~~~")
 console.log(__dirname)
-console.log(process.env.REACT_APP_PORT)
+console.log("~~~~PORT~~~~~~~~")
+console.log(process.env.REACT_APP_PORT);
 console.log("~~~~~~~~~~~~")
 
 // used to serve static files from public directory

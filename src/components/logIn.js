@@ -7,7 +7,7 @@ export function Login({ logIn }) {
    const [password, setPassword] = useState('');
 
    const handleSubmit = async (event) => {
-      console.log("logging in with the provided creds: ", "email: ", email, "& password: ", password);
+      console.log("logging in with the provided creds: ", "email: ", email);
       try {
          const loginResult = await logIn(email, password);
          if (loginResult) {

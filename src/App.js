@@ -32,7 +32,9 @@ const auth = getAuth();
 const nullUser = { balance: 0 };
 
 function App() {
-  const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
+  
+  const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
+  // const baseUrl = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_PORT || 'http://localhost:5500';
 
   const [status, setStatus] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);

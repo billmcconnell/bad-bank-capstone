@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Card} from './context';
 
-const baseUrl = 'http://localhost:5500';
+const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
 
 export function CreateAccount({ initializeUser, createWithFirebase }) {
   const [show, setShow] = useState(true);
@@ -30,7 +30,6 @@ async function handleCreate() {
   }
 
   console.log('email in handleCreate', email)
-  console.log('password in handleCreate', password)
 
   createWithFirebase(email, password)
 

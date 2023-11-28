@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const MongoClient = require('mongodb').MongoClient;
 const uri = process.env.REACT_APP_MONGO_URI || 'mongodb://localhost:27017';
 let db  = null;

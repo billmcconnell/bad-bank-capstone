@@ -8,6 +8,7 @@ export function Home() {
        zIndex: "-1",
        align: "center",
    };
+
    return (
        <>
        <br />
