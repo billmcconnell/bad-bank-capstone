@@ -22,6 +22,18 @@ const firebaseConfig = {
   appId: "1:439456617792:web:77338421dbde47eef396a5"
 };
 
+//CRUD
+console.log("~~~~CRUD~~~~~~")
+console.log(process.env.REACT_APP_MONGO_URI);
+console.log("~~~~~~~~~~")
+
+//path info
+console.log("~~~~dirname~~~~~~~~")
+console.log(__dirname)
+console.log("~~~~PORT~~~~~~~~")
+console.log(process.env.REACT_APP_PORT);
+console.log("~~~~~~~~~~~~")
+
 // const firebaseConfig = {
 //   process.env.REACT_APP_FIREBASE_CONFIG
 // };
