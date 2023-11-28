@@ -3,9 +3,9 @@ import { Card } from "./context";
 
 export function AllData() {
     const [data, setData] = React.useState('');
-    // const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
+    const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
     // const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
-    const baseUrl = process.env.REACT_APP_PORT;
+    // const baseUrl = process.env.REACT_APP_PORT;
 
     function fetchData() {
         fetch(`${baseUrl}/account/all`)
