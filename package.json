@@ -19,11 +19,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "client": "npm start",
+    "server": "node ./back-end/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    },
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -42,10 +45,10 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:5500",
   "description": "MITxPro Full Stack Banking App",
   "main": "",
   "keywords": [],
   "author": "bmcconnell",
-  "license": "MIT",
-  "devDependencies": {}
+  "license": "MIT"
 }
