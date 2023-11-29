@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Card} from './context';
 
-const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
+const baseUrl = process.env.NODE_ENV === 'development' ? '' : 'http://localhost:5500';
 // const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
 // const baseUrl = process.env.REACT_APP_PORT ;
 
