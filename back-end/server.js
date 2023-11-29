@@ -9,7 +9,9 @@ console.log("~~~~CRUD~~~~~~")
 console.log(process.env.REACT_APP_MONGO_URI);
 console.log("~~~~~~~~~~")
 
-//path info
+//additional info info
+console.log("~~~~environment~~~~~~~~")
+console.log(process.env.NODE_ENV);
 console.log("~~~~dirname~~~~~~~~")
 console.log(__dirname)
 console.log("~~~~PORT~~~~~~~~")

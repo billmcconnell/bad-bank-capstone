@@ -20,7 +20,7 @@ export function AllData() {
         if (data === '') { fetchData() }
 
 
-    }, [data]);
+    }, [data, fetchData]);
 
     if (data !== '')
         return (
