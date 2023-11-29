@@ -25,7 +25,9 @@ const firebaseConfig = {
 //CRUD
 console.log("~~~~CRUD~~~~~~")
 console.log(process.env.REACT_APP_MONGO_URI);
-console.log("~~~~~~~~~~")
+console.log("~~~~NODE ENV~~~~~~")
+console.log(process.env.NODE_ENV);
+
 
 //path info
 console.log("~~~~dirname~~~~~~~~")
