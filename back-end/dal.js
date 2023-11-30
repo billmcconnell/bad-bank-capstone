@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const uri = process.env.REACT_APP_MONGO_URI || 'mongodb://localhost:27017';
+const uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
 let db  = null;
  
 // connect to mongo

@@ -5,7 +5,7 @@ export function AllData() {
     const [data, setData] = React.useState('');
     // const baseUrl = process.env.NODE_ENV === 'development' ? '' : 'http://localhost:5500';
     // const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
-    const baseUrl = process.env.REACT_APP_PORT;
+    const baseUrl = process.env.PORT;
 
     function fetchData() {
         fetch(`${baseUrl}/account/all`)
