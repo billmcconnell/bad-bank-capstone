@@ -26,7 +26,7 @@ export function AllData() {
             fetchData();
         }
 
-    }, [data]); // Only re-run the effect if data changes
+    }, [data, baseUrl]); // Only re-run the effect if data changes
 
     //start original code to refactor
     // function fetchData() {
