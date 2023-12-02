@@ -1,26 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "./context";
 
 export function AllData() {
-    const [data, setData] = React.useState('');
+    const [data, setData] = useState('');
     // const baseUrl = process.env.NODE_ENV === 'development' ? '' : 'http://localhost:5500';
-    // const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
-    const baseUrl = process.env.PORT;
-
-    function fetchData() {
-        fetch(`${baseUrl}/account/all`)
-            .then(async (res) => {
-
-                const data = await res.json();
-                return setData(data);
-            })
-    }
+    const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
+    // const baseUrl = process.env.REACT_APP_PORT;
 
     useEffect(() => {
-        if (data === '') { fetchData() }
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${baseUrl}/account/all`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const jsonData = await response.json();
+                setData(jsonData);
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+                // Handle error appropriately
+            }
+        };
+
+        if (data === '') {
+            fetchData();
+        }
+
+    }, [data]); // Only re-run the effect if data changes
+
+    //start original code to refactor
+    // function fetchData() {
+    //     fetch(`${baseUrl}/account/all`)
+    //         .then(async (res) => {
+
+    //             const data = await res.json();
+    //             return setData(data);
+    //         })
+    // }
+
+    // useEffect(() => {
+    //     if (data === '') { fetchData() }
 
 
-    }, [data, fetchData]);
+    // }, [data, fetchData]);
+    // end original code
 
     if (data !== '')
         return (
