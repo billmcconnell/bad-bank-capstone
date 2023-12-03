@@ -28,23 +28,6 @@ export function AllData() {
 
     }, [data, baseUrl]); // Only re-run the effect if data changes
 
-    //start original code to refactor
-    // function fetchData() {
-    //     fetch(`${baseUrl}/account/all`)
-    //         .then(async (res) => {
-
-    //             const data = await res.json();
-    //             return setData(data);
-    //         })
-    // }
-
-    // useEffect(() => {
-    //     if (data === '') { fetchData() }
-
-
-    // }, [data, fetchData]);
-    // end original code
-
     if (data !== '')
         return (
             <Card
