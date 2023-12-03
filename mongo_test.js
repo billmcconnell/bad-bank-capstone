@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 // const url = 'mongodb://localhost:27017';
-const uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
+const uri = process.env.REACT_APP_MONGO_URI || 'mongodb://localhost:27017';
  
 // connect to mongo
 MongoClient.connect(uri, {useUnifiedTopology: true}, function(err, client) {

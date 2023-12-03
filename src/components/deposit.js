@@ -11,7 +11,7 @@ export function Deposit({ adjustBalance, balance }) {
    function handleDeposit() {
 
       if (validationError) {
-         setStatusMesssage(`Error Deposit ${validationError}`);
+         setStatusMesssage(`Error: Deposit ${validationError}`);
          console.log('see validation in deposit.js')
          return;
       }

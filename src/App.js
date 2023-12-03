@@ -13,6 +13,8 @@ import { AllData } from "./components/alldata";
 import { NavBar } from "./components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// consider using env to hold the firebase apiKey and other info
+
 const firebaseConfig = {
   apiKey: "AIzaSyAzqowx_yve-R5hIr1--KEgL8Qx7SmJefI",
   authDomain: "bank-auth-b3be0.firebaseapp.com",
@@ -36,10 +38,6 @@ console.log("~~~~PORT~~~~~~~~")
 console.log(process.env.REACT_APP_PORT);
 console.log("~~~~~~~~~~~~")
 
-// const firebaseConfig = {
-//   process.env.REACT_APP_FIREBASE_CONFIG
-// };
-
 // Initialize Firebase
 initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -47,9 +45,9 @@ const nullUser = { balance: 0 };
 
 function App() {
   
-  const baseUrl = process.env.PORT;
+  // const baseUrl = process.env.PORT;
   // const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
-  //const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
+  const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
 
   const [status, setStatus] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
