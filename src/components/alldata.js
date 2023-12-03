@@ -3,8 +3,8 @@ import { Card } from "./context";
 
 export function AllData() {
     const [data, setData] = useState('');
-    // const baseUrl = process.env.NODE_ENV === 'development' ? '' : 'http://localhost:5500';
-    const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
+    // const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
+    const baseUrl = process.env.PORT || 'http://localhost:5500';
     // const baseUrl = process.env.REACT_APP_PORT;
 
     useEffect(() => {

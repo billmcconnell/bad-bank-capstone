@@ -15,7 +15,7 @@ console.log(process.env.NODE_ENV);
 console.log("~~~~dirname~~~~~~~~")
 console.log(__dirname)
 console.log("~~~~PORT~~~~~~~~")
-console.log(process.env.REACT_APP_PORT);
+console.log(process.env.PORT);
 console.log("~~~~~~~~~~~~")
 
 // used to serve static files from public directory
@@ -132,7 +132,7 @@ app.get('/account/all', function (req, res) {
         });
 });
 
-const PORT = process.env.REACT_APP_PORT || 5500;
+const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
