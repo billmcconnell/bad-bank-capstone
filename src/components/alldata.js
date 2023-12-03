@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "./context";
 
+// const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
+// const baseUrl = process.env.PORT || 'http://localhost:5500';
+const baseUrl = process.env.REACT_APP_PORT;
+
 export function AllData() {
     const [data, setData] = useState('');
-    const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
-    // const baseUrl = process.env.PORT || 'http://localhost:5500';
-    // const baseUrl = process.env.REACT_APP_PORT;
 
     useEffect(() => {
         const fetchData = async () => {
