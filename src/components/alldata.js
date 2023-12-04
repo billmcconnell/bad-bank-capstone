@@ -23,11 +23,11 @@ export function AllData() {
             }
         };
 
-        if (data === '') {
+        if (data !== null) {
             fetchData();
         }
 
-    }, [data, baseUrl]); // Only re-run the effect if data changes
+    }, [data]); // Only re-run the effect if data changes
 
     if (data !== '')
         return (
