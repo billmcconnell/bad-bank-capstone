@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-server": "node back-end/server.js && sleep 5 && npm start"
+    "start-server": "node back-end/server.js"
   },
   "eslintConfig": {
     "extends": [
