@@ -12,6 +12,7 @@ import { Balance } from "./components/balance";
 import { AllData } from "./components/alldata";
 import { NavBar } from "./components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { clear } from "@testing-library/user-event/dist/clear";
 
 // consider using env to hold the firebase apiKey and other info
 
@@ -48,7 +49,6 @@ function App() {
   // const baseUrl = process.env.PORT;
   // const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
   const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
-
   const [status, setStatus] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
