@@ -12,7 +12,6 @@ import { Balance } from "./components/balance";
 import { AllData } from "./components/alldata";
 import { NavBar } from "./components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { clear } from "@testing-library/user-event/dist/clear";
 
 // consider using env to hold the firebase apiKey and other info
 
@@ -36,7 +35,7 @@ console.log(process.env.NODE_ENV);
 console.log("~~~~dirname~~~~~~~~")
 console.log(__dirname)
 console.log("~~~~PORT~~~~~~~~")
-console.log(process.env.REACT_APP_PORT);
+console.log(process.env.PORT);
 console.log("~~~~~~~~~~~~")
 
 // Initialize Firebase
