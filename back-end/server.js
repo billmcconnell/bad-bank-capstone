@@ -1,76 +1,127 @@
-const express = require('express');
-const app = express();
-require('dotenv').config({ path: '../.env' })
-const cors = require('cors');
-const dal = require('./dal.js');
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
-//CRUD
-console.log("~~~~CRUD~~~~~~")
-console.log(process.env.REACT_APP_MONGO_URI);
-console.log("~~~~~~~~~~")
+const options = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Bad Bank Capstone ',
+            version: '1.0.0',
+            description: 'Bank Bank API',
+        },
+    },
+    apis: [path.join(__dirname, 'server.js')],
+};
 
-//additional info info
-console.log("~~~~environment~~~~~~~~")
-console.log(process.env.NODE_ENV);
-console.log("~~~~dirname~~~~~~~~")
-console.log(__dirname)
-console.log("~~~~PORT~~~~~~~~")
-console.log(process.env.PORT);
-console.log("~~~~~~~~~~~~")
+const swaggerSpec = swaggerJSDoc(options);
 
-// used to serve static files from public directory
-app.use(express.static('public'));
-app.use(cors());
+module.exports = swaggerSpec;
 
-// create user account
+
+app.use(cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+}));
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+
+// Serve Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// For hello world test
+/**
+ * @openapi
+ * /hello:
+ *   get:
+ *     summary: Get a hello message
+ *     responses:
+ *       '200':
+ *         description: Hello World response
+ */
+app.get('/hello', function (req, res) {
+    res.send('Hello World!');
+});
+
+// For data abstraction layer
+
+// Create a new account
+/**
+ * @openapi
+ * /account/create/{name}/{email}/{password}:
+ *   get:
+ *     summary: Create a new account
+ *     parameters:
+ *       - name: name
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: email
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       '200':
+ *         description: Account created successfully
+ */
 app.get('/account/create/:name/:email/:password', function (req, res) {
-
-    // check if account exists
-    dal.find(req.params.email)
-        .then((users) => {
-
-            // if user exists, return error message
-            if (users.length > 0) {
-                console.log('User already exists');
-                res.send('User already exists');
-            }
-            else {
-                // else create user
-                dal.create(req.params.name, req.params.email, req.params.password)
-                    .then((user) => {
-                        console.log(user);
-                        res.send(user);
-                    });
-            }
-
-        });
-});
-
-
-// login user 
-app.get('/account/login/:email/:password', function (req, res) {
-
-    dal.find(req.params.email)
+    dal.create(req.params.name, req.params.email, req.params.password)
         .then((user) => {
-
-            // if user exists, check password
-            if (user.length > 0) {
-                if (user[0].password === req.params.password) {
-                    res.send(user[0]);
-                }
-                else {
-                    res.send('Login failed: wrong password');
-                }
-            }
-            else {
-                res.send('Login failed: user not found');
-            }
+            console.log(user);
+            res.send(user);
         });
-
 });
 
-// deposit to a user account
+// Login to an account
+/**
+ * @openapi
+ * /account/login/{email}/{password}:
+ *   get:
+ *     summary: Log in to an account
+ *     parameters:
+ *       - name: email
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       '200':
+ *         description: Login successful
+ */
+app.get('/account/login/:email/:password', function (req, res) {
+    dal.login(req.params.email, req.params.password)
+        .then((user) => {
+            res.send(user);
+        });
+});
 
+// Deposit funds to an account
+/**
+ * @openapi
+ * /account/adjust/{email}/{amount}:
+ *   get:
+ *     summary: adjust funds to an account positive for deposit, negative for withdraw
+ *     parameters:
+ *       - name: email
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: amount
+ *         in: path
+ *         required: true
+ *         type: number
+ *     responses:
+ *       '200':
+ *         description: adjust successful
+ */
 app.get('/account/adjust/:email/:amount', function (req, res) {
     dal.adjust(req.params.email, req.params.amount)
         .then((balance) => {
@@ -79,8 +130,21 @@ app.get('/account/adjust/:email/:amount', function (req, res) {
         });
 });
 
-// get the balance for a user account
-
+// Get the balance for an account
+/**
+ * @openapi
+ * /account/balance/{email}:
+ *   get:
+ *     summary: Get the balance for an account
+ *     parameters:
+ *       - name: email
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       '200':
+ *         description: Balance retrieved successfully
+ */
 app.get('/account/balance/:email', function (req, res) {
     dal.balance(req.params.email)
         .then((balance) => {
@@ -89,47 +153,28 @@ app.get('/account/balance/:email', function (req, res) {
         });
 });
 
-// find user account
-app.get('/account/find/:email', function (req, res) {
-
-    dal.find(req.params.email)
-        .then((user) => {
-            console.log(user);
-            res.send(user);
-        });
-});
-
-// find one user by email - alternative to find
-app.get('/account/findOne/:email', function (req, res) {
-
-    dal.findOne(req.params.email)
-        .then((user) => {
-            console.log(user);
-            res.send(user);
-        });
-});
-
-
-// update - deposit/withdraw amount
-app.get('/account/update/:email/:amount', function (req, res) {
-
-    const amount = Number(req.params.amount);
-
-    dal.update(req.params.email, amount)
-        .then((response) => {
-            console.log(response);
-            res.send(response);
-        });
-});
-
-// all accounts
+// For all data in the database
+/**
+ * @openapi
+ * /account/all:
+ *   get:
+ *     summary: Get all data in the database
+ *     responses:
+ *       '200':
+ *         description: Data retrieved successfully
+ */
 app.get('/account/all', function (req, res) {
-
     dal.all()
         .then((docs) => {
-            console.log(docs);
+            console.log('Docs in index', docs);
             res.send(docs);
         });
+});
+
+app.use(express.static(path.join(__dirname, '..', 'build')));
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5500;
