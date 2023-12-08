@@ -1,2 +1,2 @@
-web: node ./back-end/server.js
+web: npm start
 worker:  Heroku
