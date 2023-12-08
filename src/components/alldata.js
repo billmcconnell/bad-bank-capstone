@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "./context";
 
-const baseUrl = 'https://badbankcap-b9c679d34428.herokuapp.com:process.env.PORT';
+const PORT = process.env.PORT
+const baseUrl = 'https://badbankcap-b9c679d34428.herokuapp.com:'(PORT);
 // const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
 // const baseUrl = process.env.PORT || 'http://localhost:5500';
 // const baseUrl = process.env.REACT_APP_PORT;
