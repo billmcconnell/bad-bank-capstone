@@ -46,9 +46,8 @@ const nullUser = { balance: 0 };
 function App() {
 
   const baseUrl = '';
-  // const baseUrl = process.env.PORT;
-  // const baseUrl = process.env.REACT_APP_PORT || 'http://localhost:5500';
   // const baseUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5500';
+
   const [status, setStatus] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -73,42 +72,7 @@ function App() {
       return "login failed";
     }
   }
-
-  // try new code
-
-  // let initializeUser = async (email, password) => {
-  //   try {
-  //     const res = await fetch(`${baseUrl}/account/login`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json',
-  //       },
-  //       body: JSON.stringify({ email, password })
-  //     });
   
-  //     if (!res.ok) {
-  //       throw new Error('Login failed due to server response');
-  //     }
-  
-  //     const contentType = res.headers.get("content-type");
-  //     if (!contentType || !contentType.includes("application/json")) {
-  //       throw new TypeError("Received non-JSON response from server");
-  //     }
-  
-    //   const tempUser = await res.json();
-    //   console.log("tempUser", tempUser);
-    //   setUser(tempUser);
-    //   setLoggedIn(true);
-    // } catch (err) {
-    //   console.error(err);
-    //   // Depending on your application's structure, you might want to throw an error,
-    //   // update the state, or handle this error differently.
-    //   throw new Error("Login process encountered an error");
-    // }
-  // }
-  
-
   let adjustBalance = (amount) => {
     fetch(`${baseUrl}/account/adjust/${user.email}/${Number(amount)}`)
       .then(async (res) => {
