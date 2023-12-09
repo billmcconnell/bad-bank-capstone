@@ -1,6 +1,9 @@
 {
   "name": "bad-bank-capstone",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.21.3"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
