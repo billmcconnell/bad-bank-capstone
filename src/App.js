@@ -13,23 +13,6 @@ import { AllData } from "./components/alldata";
 import { NavBar } from "./components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// Load environment variables
-// require('dotenv').config();
-
-//CRUD
-console.log("~~~~CRUD~~~~~~")
-console.log(process.env.REACT_APP_MONGO_URI);
-console.log("~~~~NODE ENV~~~~~~")
-console.log(process.env.NODE_ENV);
-
-
-//path info
-console.log("~~~~dirname~~~~~~~~")
-console.log(__dirname)
-console.log("~~~~PORT~~~~~~~~")
-console.log(process.env.PORT);
-console.log("~~~~~~~~~~~~")
-
 // consider using env to hold the firebase apiKey and other info
 
 const firebaseConfig = {

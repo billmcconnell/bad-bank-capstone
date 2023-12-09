@@ -24,7 +24,7 @@ export function NavBar({ user, isLoggedIn, signOut }) {
                <div className="collapse navbar-collapse" id="navbarNav">
                   <ul className="navbar-nav">
                      <li className="nav-item">
-                        <Link to="/createAccount" className="nav-link">
+                        <Link to="/createaccount" className="nav-link">
                            Create Account
                         </Link>
                      </li>
@@ -44,7 +44,7 @@ export function NavBar({ user, isLoggedIn, signOut }) {
                         </Link>
                      </li>
                      <li className="nav-item">
-                        <Link to="/allData" className="nav-link">
+                        <Link to="/alldata" className="nav-link">
                            All Data
                         </Link>
                      </li>
