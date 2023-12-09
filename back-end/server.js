@@ -4,6 +4,7 @@ require('dotenv').config({ path: '../.env' })
 const cors = require('cors');
 const dal = require('./dal.js');
 
+
 //CRUD
 console.log("~~~~CRUD~~~~~~")
 console.log(process.env.REACT_APP_MONGO_URI);
