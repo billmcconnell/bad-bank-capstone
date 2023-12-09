@@ -2,7 +2,7 @@
   "name": "bad-bank-capstone",
   "version": "0.1.0",
   "engines": {
-    "node": "14.21.3"
+    "node": "18.7.1"
   },
   "private": true,
   "dependencies": {
@@ -28,8 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject", 
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run start"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
