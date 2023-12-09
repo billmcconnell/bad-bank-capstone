@@ -14,7 +14,7 @@ import { NavBar } from "./components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Load environment variables
-require('dotenv').config();
+// require('dotenv').config();
 
 //CRUD
 console.log("~~~~CRUD~~~~~~")
