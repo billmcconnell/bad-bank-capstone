@@ -25,9 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start-server": "node back-end/server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run start-server && npm run start"
+    "eject": "react-scripts eject", 
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build && npm run start"
   },
   "eslintConfig": {
     "extends": [

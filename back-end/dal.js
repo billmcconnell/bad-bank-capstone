@@ -26,21 +26,21 @@ function create(name, email, password){
 // Login a user
 async function login(email, password) {
     try {
-        // Wait for the MongoDB connection to be established
-        // await connectToMongo();
+       // Wait for the MongoDB connection to be established
+        await connectToMongo();
 
-        // if (!db) {
-        //     throw new Error('MongoDB connection is not established.');
-        // }
+        if (!db) {
+            throw new Error('MongoDB connection is not established.');
+        }
 
         const collection = db.collection('users');
         const docs = await collection.find().toArray();
-        const user = docs.find((user) => user.email == email);
+        const user = docs.find((user) => user.email === email);
         if (!user) {
             return false;
         }
 
-        if (user.password == password) {
+        if (user.password === password) {
             return user;
         }
 
