@@ -36,7 +36,6 @@ export function CreateAccount({ initializeUser, createWithFirebase }) {
 
         const url = `${baseUrl}/account/create/${name}/${email}/${password}`;
         await fetch(url);
-
         await initializeUser(email, password)
         setStatusMessage('You can now deposit funds, withdraw funds, or view your balance')
         setShow(false);
