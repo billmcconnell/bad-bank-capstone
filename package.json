@@ -22,11 +22,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "./back-end/server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install"                        
+    "start-server": "node server/server.js"
   },
   "eslintConfig": {
     "extends": [
