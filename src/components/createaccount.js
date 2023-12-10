@@ -30,7 +30,7 @@ export function CreateAccount({ initializeUser, createWithFirebase }) {
             return;
         }
 
-        console.log('email in handleCreate', email)
+        console.log('email in handleCreate:', email)
 
         createWithFirebase(email, password)
 
