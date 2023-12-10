@@ -43,7 +43,7 @@ function App() {
   // initialize a user using async function 
   let initializeUser = async (email, password) => {
     try {
-      const res = await fetch(`${baseUrl}/account/login${email}/${password}`, {
+      const res = await fetch(`${baseUrl}/account/login/${email}/${password}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
