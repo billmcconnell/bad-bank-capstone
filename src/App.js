@@ -155,7 +155,7 @@ function App() {
         <NavBar user={user} isLoggedIn={loggedIn} signOut={logOut} />
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/create-acount/" element={<CreateAccount initializeUser={initializeUser} createWithFirebase={createWithFirebase} />} />
+          <Route path="/createaccount/" element={<CreateAccount initializeUser={initializeUser} createWithFirebase={createWithFirebase} />} />
           <Route path="/login" element={!loggedIn ? <Login logIn={logIn} /> : <Navigate to="/" />} />
           <Route path="/deposit" element={loggedIn ? <Deposit balance={user.balance} adjustBalance={adjustBalance} /> : <Navigate to="/login" />} />
           <Route path="/withdraw" element={loggedIn ? <Withdraw balance={user.balance} adjustBalance={adjustBalance} /> : <Navigate to="/login" />} />
